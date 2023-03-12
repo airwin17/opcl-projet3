@@ -34,13 +34,201 @@ body {
 ol, ul {
 	list-style: none;
 }
+div#header-edit-div p:hover {
+    cursor: pointer;
+}
 blockquote, q {
 	quotes: none;
+}
+#workeditlist img {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    text-align: center;
+}
+
+div#showedit-div {
+    display: none;
+    background-color: white;
+    width: 540px;
+    border-radius: 10px;
+    margin-top: 5%;
+    margin-right: auto;
+    margin-left: auto;
+}
+div#modifier-div {
+    display: none;
+    align-items: center;
+    position: relative;
+    left: 20%;
+    width: fit-content;
+}
+
+img#modifier-div-img {
+    order: 1;
+}
+
+p#modifier-div-txt {
+    order: 2;
+}
+
+div#modifier-div:hover {
+    cursor: pointer;
+}
+
+div#modifier-div2 {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    bottom: 50px;
+    left: 62%;
+    width: fit-content;
+}
+p#pooi:hover {
+    cursor: pointer;
+}
+
+p.edittxtbut:hover {
+    cursor: pointer;
+}
+.cat:hover {
+    cursor: pointer;
+}
+button.remworks:hover {
+    cursor: pointer;
+}
+div#modifier-div2:hover {
+    cursor: pointer;
+}
+div.singlework {
+    width: 80px;
+    height: 100px;
+    background: 0 0/100% no-repeat url(images/appartement-paris-v.png);
+    text-align: end;
+}
+
+div.singleworkscontainer {
+    height: 120px;
+    width: 80px;
+    margin: 10px;
+}
+
+p.edittxtbut {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    width: fit-content;
+}
+
+div#workeditlist {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+    justify-content: center;
+}
+
+p#pooi {
+    grid-row: 6/7;
+    text-align: center;
+    grid-column: 1/4;
+    margin: 10px auto;
+}
+button#addphoto {
+    border: 0;
+    font-family: 'Syne';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    background: #1D6154;
+    border-radius: 60px;
+    color: white;
+    grid-row: 4/5;
+    grid-column: 1/4;
+    margin: 10px auto;
+    padding: 10px 30px;
+}
+
+p#v55 {
+    grid-column: 1/4;
+    grid-row: 2/3;
+    text-align: center;
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 30px;
+    text-align: center;
+}
+
+div#workeditlistcontainer {
+    grid-column: 1/4;
+    grid-row: 3/4;
+    height: 300px;
+    overflow-y: scroll;
+}
+
+button.remworks {
+    border: 0;
+    background: #000000;
+    border-radius: 2px;
+    height: 17px;
+    padding: 3px;
+    width: 17px;
+    margin: 3px;
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
 	content: '';
 	content: none;
+}
+div#input-div-container {
+	background: #E8F1F7;
+	border-radius: 3px;
+	height: 170px;
+	display: grid;
+	grid-template-rows: 70% 20% 10%;
+	justify-content: center;
+	align-items: center;
+	justify-items: center;
+}
+
+p#n51615 {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+/* identical to box height */
+    text-align: center;
+    color: #444444;
+}
+
+img#kkkllghxtxfu {
+}
+label#o2723 {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #3D3D3D;
+}
+label#inputlab {
+    background: #CBD6DC;
+    border-radius: 50px;
+    padding: 10px;
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    color: #306685;
 }
 table {
 	border-collapse: collapse;
@@ -50,18 +238,111 @@ table {
 body {
 	max-width: 1140px;
 	margin:auto;
-	font-family: 'Work Sans' ;
+	font-family: 'Work Sans';
 	font-size: 14px;
+	/* position: absolute; */
 }
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 50px 0;
 }
 section {
-	margin: 50px 0
+	margin: 50px 0;
+}
+img#croix {
+    grid-column: 3/4;
+    grid-row: 1/2;
+    margin: 10px 10px 10px auto;
 }
 
+img#arrawback {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    margin: 10px;
+}
+
+p#v4455 {
+    grid-row: 2/3;
+    grid-column: 1/4;
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 30px;
+    text-align: center;
+}
+
+div#edit-div form {
+    grid-column: 1/4;
+    display: grid;
+    grid-row: 3/4;
+    width: 400px;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+input#work-ttl-input {
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+    border: 0px;
+    height: 30px;
+    margin: 10px;
+}
+
+select#workscombobox {
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+    border: 0px;
+    height: 30px;
+    margin: 10px 10px 20px 10px;
+}
+
+label.lbl {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #3D3D3D;
+}
+
+div#edit-div #inputlab {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #3D3D3E;
+}
+
+div#edit-div input[type="file"] {background: #E8F1F7;border-radius: 3px;}
+
+div#edit-div form hr {
+    outline: 1px;
+    width: 70%;
+}
+
+button#submiter {
+    margin: auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    background: #1D6154;
+    border-radius: 60px;
+    border: 0;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: 'Syne';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+/* identical to box height */
+    text-align: center;
+    color: #FFFFFF;
+}
 h1{
 	display: flex;
 	flex-direction: column;
@@ -94,13 +375,112 @@ nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
 }
+input#email-input {
+    border: 0px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+    height: 30px;
+}
+form#login-form>h4 {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+    font-family: 'Syne';
+    display: none;
+}
+div#header-edit-div {
+    background-color: black;
+    text-align: center;
+    display: none;
+    right: 0;
+    position: fixed;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    flex-direction: row;
+    top: 0;
+}
 
+div#header-edit-div p {
+    color: white;
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    text-align: center;
+    margin-left: 10px;
+    line-height: 19px;
+    margin-right: 10px;
+}
+
+div#header-edit-div button {
+    background: #FFFFFF;
+    border-radius: 60px;
+    border: 0;
+    padding: 10px;
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    color: #000000;
+}
+
+div#header-edit-div img {
+    /* text-align: center; */
+}
+div#blsc-div {
+	position: fixed;
+	top: 50px;
+	left: 0;
+	display: none;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+div#edit-div {
+    background-color: white;
+    width: fit-content;
+    margin: auto;
+    position: relative;
+    top: 10%;
+    display: none;
+    border-radius: 10px;
+}
+input#mdp-input {
+    border: 0px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+    height: 30px;
+}
+
+label#mdp-lab {
+    margin: 10px;
+}
+
+label#lab-email {
+    margin: 10px;
+}
 li:hover {
 	color: #B1663C;
+	cursor: pointer;
+}
+form#login-form {
+    display: grid;
+    margin: auto;
+    width: 40%;
+}
+
+p#mdpoub {
+    text-align: center;
 }
 #introduction {
 	display: flex;
 	align-items: center;
+	margin-bottom: 10px;
 }
 #introduction figure {
 	flex: 1
@@ -145,6 +525,68 @@ margin: auto;
 	text-align: center;
 
 }
+
+p#log-p {
+    font-family: 'Syne';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 36px;
+    text-align: center;
+    color: #1D6154;
+}
+
+label#lab-email {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #3D3D3D;
+}
+
+label#mdp-lab {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #3D3D3D;
+}
+
+p#mdpoub {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    text-decoration-line: underline;
+    color: #3D3D3D;
+}
+
+input#log-subbut {
+    background: #1D6154;
+    border-radius: 60px;
+    border: 0px;
+    font-family: 'Syne';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-right: auto;
+    padding: 10px;
+    margin-left: auto;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+#login-div{
+	display: none;
+	height: 440px;
+}
 #contact h2{
 	margin-bottom: 20px;
 }
@@ -185,4 +627,17 @@ footer nav ul {
 	justify-content: flex-end;
 	margin: 2em
 }
+nav#nav-cat {
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: center;
+}
 
+.cat {
+    color: #1D6154;
+    border: 1px solid #1D6154;
+    border-radius: 60px;
+    padding: 10px;
+    margin-right: 10px;
+    font-family: 'Syne';
+}
