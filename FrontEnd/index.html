@@ -1,117 +1,117 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Sophie Bluel - Architecte d'intérieur</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
+		rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="assets/style.css">
-	
+
 </head>
+
 <body>
 	<div id="header-edit-div">
 		<img src="assets/icons/Group black.png">
-		<p onclick="switchworks()">Mode édition</p>
+		<p id="edit-mode">Mode édition</p>
 		<button>publier les changement</button>
 	</div>
-<header>
-	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
-	<nav>
-		<ul>
-			<li>projets</li>
-			<li>contact</li>
-			<li id="loginbut" onclick="tologin()">login</li>
-			<li><img src="assets/icons/instagram.png" alt="Instagram"></li>
-		</ul>
-	</nav>
-</header>
+	<header>
+		<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+		<nav>
+			<ul>
+				<li>projets</li>
+				<li>contact</li>
+				<li id="loginbut">login</li>
+				<li><img src="assets/icons/instagram.png" alt="Instagram"></li>
+			</ul>
+		</nav>
+	</header>
 
-<div id="login-div" >
-	<p id="log-p">Log in</p>
-	<form id="login-form">
-		<label for="email" id="lab-email">Email</label>
-		<input type="text" name="email" id="email-input">
-		<label for="password" id="mdp-lab">Mot de passe</label>
-		<input type="password" id="mdp-input" name="password">
-		<h4 id="mdpfaux">mot de passe ou email incorrect</h4>
-		<input type="button" id="log-subbut" value="Se connecter" onclick="trytologin()">
-		
-	</form>
-	<p id="mdpoub">Mot de passe oublié</p>
-</div>
-<div id="blsc-div">
-	<div id="showedit-div">
-		<img id="croix" src="assets/icons/croit.png" onclick="switchworks()">
-		<p id="v55">Galerie photo</p>
-		<div id="workeditlistcontainer">
-			<div id="workeditlist">
-				<!--<div id="singleworkscontainer">
-					<div id="singlework">
-						<button id="remworks" onclick="removework()">
-							<img src="assets/icons/cobeille.png">
-						</button>
-					</div>
-					<p id="uuiuii">éditer</p>
-				</div>-->
-				
-			</div>
-		</div>
-		<button id="addphoto" onclick="addworkform()">Ajouter une photo</button>
-		<p id="pooi">Supprimer la galerie</p>
-	</div>
-	<div id="edit-div">
-		<img id="croix" src="assets/icons/croit.png" onclick="backtocms()">
-		<img id="arrawback" src="assets/icons/Arrow_Back.png" onclick="backfromeditdiv()">
-		<p id="v4455">Ajouter une Photo</p>
-		<form id="neworkform">
-			<div id="input-div-container">
-				<img src="assets/icons/Gr.png" id="kkkllghxtxfu">
-				<label for="inputfile" id="inputlab" onchange="">+ Ajouter une photo</label>
-				<p id="n51615">jpg, png : 4mo max</p>
-			</div>
-			<input type="file" name="image" id="inputfile" accept=".png,.jpg"style="display: none;" onchange="o()">
-			<label for="title" class="lbl">Titre</label>
-			<input type="text" name="title" id="work-ttl-input" onchange="o()">
-			<label for="categorie" id="o2723">Catégorie</label>
-			<select name="categorie" id="workscombobox">
-				
-			</select>
-			<hr>
-			<button id="submiter" onclick="trytocreateworks()">Valider</button>
+	<div id="login-div">
+		<p id="log-p">Log in</p>
+		<form id="login-form">
+			<label for="email" id="lab-email">Email</label>
+			<input type="text" name="email" id="email-input">
+			<label for="password" id="mdp-lab">Mot de passe</label>
+			<input type="password" id="mdp-input" name="password">
+			<h4 id="mdpfaux">mot de passe ou email incorrect</h4>
+			<input type="button" id="log-subbut" value="Se connecter">
+
 		</form>
+		<p id="mdpoub">Mot de passe oublié</p>
 	</div>
-</div>
-<main id="mainp">
-	<section id="introduction">
-		<figure>
-			<img src="./assets/images/sophie-bluel.png" alt="">
-		</figure>
-		<article>
-			<h2>Designer d'espace</h2>
-			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
-			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
-			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
-		</article>
-	</section>
-	<div id="modifier-div">
-		<p id="modifier-div-txt">Modifier</p>
-		<img src="assets/icons/Group.png" id="modifier-div-img">
+	<div id="blsc-div">
+		<div id="showedit-div">
+			<img id="croix" src="assets/icons/croit.png">
+			<p id="v55">Galerie photo</p>
+			<div id="workeditlistcontainer">
+				<div id="workeditlist">
+
+				</div>
+			</div>
+			<button id="addphoto">Ajouter une photo</button>
+			<p id="pooi">Supprimer la galerie</p>
+		</div>
+		<div id="edit-div">
+			<img id="croixi" src="assets/icons/croit.png">
+			<img id="arrawback" src="assets/icons/Arrow_Back.png" onclick="backfromeditdiv()">
+			<p id="v4455">Ajouter une Photo</p>
+			<form id="neworkform">
+				<div id="input-div-container">
+					<img src="assets/icons/Gr.png" id="kkkllghxtxfu">
+					<label for="inputfile" id="inputlab" onchange="">+ Ajouter une photo</label>
+					<p id="n51615">jpg, png : 4mo max</p>
+				</div>
+				<input type="file" name="image" id="inputfile" accept=".png,.jpg" style="display: none;" onchange="o()">
+				<label for="title" class="lbl">Titre</label>
+				<input type="text" name="title" id="work-ttl-input">
+				<label for="categorie" id="o2723">Catégorie</label>
+				<select name="categorie" id="workscombobox">
+				</select>
+				<hr>
+				<button id="submiter">Valider</button>
+			</form>
+		</div>
 	</div>
-	<section id="portfolio">
-		<h2>Mes Projets</h2>
-		<div id="modifier-div2">
+	<main id="mainp">
+		<section id="introduction">
+			<figure>
+				<img src="./assets/images/sophie-bluel.png" alt="">
+			</figure>
+			<article>
+				<h2>Designer d'espace</h2>
+				<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison
+					finale du chantier.</p>
+				<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les
+					couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du
+					chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
+				<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG,
+					décorateur(trice)</p>
+			</article>
+		</section>
+		<div id="modifier-div">
 			<p id="modifier-div-txt">Modifier</p>
 			<img src="assets/icons/Group.png" id="modifier-div-img">
 		</div>
-		<nav id="nav-cat">
-			<div class="cat" onclick="trier('al')"><p>Tous</p></div>
-			
-		</nav>
-		<div class="gallery">
-			<!--<figure>
+		<section id="portfolio">
+			<h2>Mes Projets</h2>
+			<div id="modifier-div2">
+				<p id="modifier-div-txt">Modifier</p>
+				<img src="assets/icons/Group.png" id="modifier-div-img">
+			</div>
+			<nav id="nav-cat">
+				<div class="cat" onclick="trier('al')">
+					<p>Tous</p>
+				</div>
+
+			</nav>
+			<div class="gallery">
+				<!--<figure>
 				<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
 				<figcaption>Abajour Tahina</figcaption>
 			</figure>
@@ -155,30 +155,31 @@
 				<img src="assets/images/hotel-first-arte-new-delhi.png" alt="Hotel First Arte - New Delhi">
 				<figcaption>Hotel First Arte - New Delhi</figcaption>
 			</figure>-->
-		</div>
-	</section>
-	<section id="contact">
-		<h2>Contact</h2>
-		<p>Vous avez un projet ? Discutons-en !</p>
-		<form action="#" method="post">
-			<label for="name">Nom</label>
-			<input type="text" name="name" id="name">
-			<label for="email">Email</label>
-			<input type="email" name="email" id="email">
-			<label for="message">Message</label>
-			<textarea name="message" id="message" cols="30" rows="10"></textarea>
-			<input type="submit" value="Envoyer">
-		</form>
-	</section>
-</main>
+			</div>
+		</section>
+		<section id="contact">
+			<h2>Contact</h2>
+			<p>Vous avez un projet ? Discutons-en !</p>
+			<form action="#" method="post">
+				<label for="name">Nom</label>
+				<input type="text" name="name" id="name">
+				<label for="email">Email</label>
+				<input type="email" name="email" id="email">
+				<label for="message">Message</label>
+				<textarea name="message" id="message" cols="30" rows="10"></textarea>
+				<input type="submit" value="Envoyer">
+			</form>
+		</section>
+	</main>
 
-<footer>
-	<nav>
-		<ul>
-			<li>Mentions Légales</li>
-		</ul>
-	</nav>
-</footer>
-<script src="assets/logicscript.js"></script>
+	<footer>
+		<nav>
+			<ul>
+				<li>Mentions Légales</li>
+			</ul>
+		</nav>
+	</footer>
+	<script src="assets/logicscript.js"></script>
 </body>
+
 </html>
