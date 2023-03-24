@@ -173,63 +173,34 @@ async function loadcategories() {
 }
 //try to creat work
 
-async function trytocreateworks() {
-    debugger;
-    /*var inputworks = {
-        image: cimage,
-        title: get("input#work-ttl-input").value,
-        category: get("select#workscombobox").value
-    }*/
-    var formdata = new FormData(get(neworkform));
-    /*for(let key in inputworks){
-        formdata.append(key ,inputworks[key])
-    }
-    //S0phie*/
-    try {
 
-        const response = await fetch("http://localhost:5678/api/works",
-            {
-                method: "POST",
-                headers: {
-                    'Authorization': `Bearer ${token.token}`,
-                    'Content-Type':'multipart/form-data'
-                },
-                body: formdata
-            });
-        
-        if (response.ok) {
-
-            state.setcmsworkconfirm = false;
-            refrech();
-        }
-    } catch (error) {
-        alert(error);
-    }
-}
 
 
 
 //check form validity
 async function checkerworks() {
-    if (get("#inputfile").files[0].size <= 4097152) {
-        var readers=new FileReader();
-            readers.onload = function (e) {
-                get("img#kkkllghxtxfu").src = e.target.result;
-                get("img#kkkllghxtxfu").style.height = "100%";
-            };
-            readers.readAsDataURL(get("#inputfile").files[0]);
-        if (get("input#work-ttl-input").value != "" && get("input#work-ttl-input").checkValidity()) {
+    if(get("#inputfile").files.length>0){
+        if (get("#inputfile").files[0].size <= 4097152) {
             
-            cimage=await fileToBinaryString(get("#inputfile").files[0]);
-            
-            return true;
-        } else {
+            var readers=new FileReader();
+                readers.onload = function (e) {
+                    get("img#kkkllghxtxfu").src = e.target.result;
+                    get("img#kkkllghxtxfu").style.height = "100%";
+                };
+                readers.readAsDataURL(get("#inputfile").files[0]);
+                cimage=await fileToBinaryString(get("#inputfile").files[0]);
+            if (get("input#work-ttl-input").value != "" && get("input#work-ttl-input").checkValidity()) {
+                
+                //cimage=await fileToBinaryString(get("#inputfile").files[0]);
+                buttonstate(true);
+            } else {
+                buttonstate(false);
+            }
+        } else if (get("#inputfile").files[0].size > 4097152) {
+            alert("File is too big!");
+            get("#inputfile").value = "";
             return false;
         }
-    } else if (get("#inputfile").files[0].size > 4097152) {
-        alert("File is too big!");
-        get("#inputfile").value = "";
-        return false;
     }
 }
 
@@ -253,7 +224,7 @@ async function fileToBinaryString(file) {
       reader1.readAsBinaryString(file);
       // Quand la lecture est terminée, résoudre la promesse avec le résultat
       reader1.onloadend = () => {
-        resolve(reader.result);
+        resolve(reader1.result);
       };
       // En cas d'erreur, rejeter la promesse avec l'erreur
       reader1.onerror = (error) => {
@@ -261,6 +232,12 @@ async function fileToBinaryString(file) {
       };
     });
 }
+function intToInt64(num) {
+    var arr = new Int32Array(2);
+    arr[0] = num;
+    arr[1] = (num > 0x7fffffff) ? 0xffffffff : 0;
+    return new BigInt64Array(arr.buffer)[0];
+  }
 //********************************************************************************************************
 get("#edit-mode").addEventListener('click',switchworks);
 get("#croix").addEventListener('click',switchworks);
@@ -269,13 +246,12 @@ get("#croixi").addEventListener('click',backtocms);
 get("#log-subbut").addEventListener('click',trytologin);
 get("#addphoto").addEventListener('click',addworkform);
 get("#arrawback").addEventListener('click',backfromeditdiv);
-get("#work-ttl-input").addEventListener('change',o);
-get("#inputfile").addEventListener('change',()=>{
-    o()
-});
+get("#work-ttl-input").addEventListener('change',checkerworks);
+get("#inputfile").addEventListener('change',checkerworks);
 get(".cat").addEventListener('click',()=>{
     trier('al')
 });
+get("#submiter").addEventListener('click',trytocreateworks);
 /*get("#").addEventListener('click', function (){
     state.setcmsworkconfirm = false;
     if (state.cmsworks == false) {
@@ -315,17 +291,6 @@ function backfromeditdiv() {//#arrawback
     get("img#kkkllghxtxfu").src = defaultimg;
     get("img#kkkllghxtxfu").style.height = "auto";
 }
-//check file
-function o() {
-    if (get("#inputfile").files.length > 0) {
-        if (checkerworks() == true) {
-            buttonstate(true);
-        } else {
-            buttonstate(false);
-        }
-    }
-
-};
 //************************************************************************************************************ */
 //log-subbut
 async function trytologin() {
@@ -336,7 +301,6 @@ async function trytologin() {
         email: "sophie.bluel@test.tld",
         password: "S0phie"
     }
-
     try {
 
         const res = await fetch(server + "users/login", {
@@ -359,4 +323,35 @@ async function trytologin() {
     } catch (error) {
         alert("failed check internet connection");
     }
+}
+async function trytocreateworks() {
+    
+    
+    //S0phie*/
+    try {
+        var inputworks = {
+            image: get("#inputfile").files[0],
+            title: get("#work-ttl-input").value,
+            category: parseInt(get("select#workscombobox").value)
+        }
+        var formdata = new FormData();
+        for(let key in inputworks){
+            formdata.append(key ,inputworks[key])
+        }
+        const response = await fetch("http://localhost:5678/api/works",
+            {
+                method: "POST",
+                headers: {
+                    'accept': 'application/json',
+                    'Authorization': `Bearer ${token.token}`,
+                    //'Content-Type':'multipart/form-data'
+                },
+                body: formdata
+            });
+            refrech();
+        
+    } catch (error) {
+        alert(error);
+    }
+    return false;
 }
