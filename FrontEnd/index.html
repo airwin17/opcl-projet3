@@ -45,7 +45,7 @@
 		</form>
 		<p id="mdpoub">Mot de passe oublié</p>
 	</div>
-	<div id="blsc-div">
+	<div id="blsc-div" >
 		<div id="showedit-div">
 			<img id="croix" src="assets/icons/croit.png">
 			<p id="v55">Galerie photo</p>
@@ -61,7 +61,7 @@
 			<img id="croixi" src="assets/icons/croit.png">
 			<img id="arrawback" src="assets/icons/Arrow_Back.png">
 			<p id="v4455">Ajouter une Photo</p>
-			<form id="neworkform">
+			<form id="neworkform" onsubmit="trytocreateworks();return false;">
 				<div id="input-div-container">
 					<img src="assets/icons/Gr.png" id="kkkllghxtxfu">
 					<label for="inputfile" id="inputlab" onchange="">+ Ajouter une photo</label>
@@ -74,8 +74,13 @@
 				<select name="categorie" id="workscombobox">
 				</select>
 				<hr>
-				<button id="submiter">Valider</button>
+				<input  type="submit" id="submiter" value="valider">
 			</form>
+		</div>
+		<div id="error-div">
+			<h3>error:</h3>
+			<p></p>
+			<button>of</button>
 		</div>
 	</div>
 	<main id="mainp">

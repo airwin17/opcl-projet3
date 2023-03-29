@@ -11,6 +11,25 @@ var state = {
     login: false,
     cmsworks: false,
     cmsworkconfirm: false,
+    errordiv:false,
+    errormessasge:"",
+    set seterrordiv(st){
+        if(st==false){
+            get("#error-div").style.display="none";
+            get("div#blsc-div").style.display = "none";
+            get("body").style.overflow = 'scroll';
+            get("#edit-mode").addEventListener('click',switchworks);
+        }else{
+            get("#edit-mode").removeEventListener('click',switchworks);
+            get("#error-div").style.display="block";
+            get("div#blsc-div").style.display = "block";
+            get("body").style.overflow = 'hidden';
+        }
+        this.errordiv=st;
+    },
+    set setmessage(st){
+        this.errormessasge=st;
+    },
     set setlogin(st) {
         if (st == true) {
             get("#mainp").style.display = "none";
@@ -69,6 +88,7 @@ var state = {
         }
     }
 }
+
 //refrech cmsworks
 async function refrech() {
     try {
@@ -106,11 +126,11 @@ reader.onload = function (e) {
 // stat of valider button
 function buttonstate(st) {
     if (st == true) {
-        get("button#submiter").disabled = false;
-        get("button#submiter").style.backgroundColor = "#1D6154";
+        get("#submiter").disabled = false;
+        get("#submiter").style.backgroundColor = "#1D6154";
     } else {
-        get("button#submiter").disabled = true;
-        get("button#submiter").style.backgroundColor = "#A7A7A7";
+        get("#submiter").disabled = true;
+        get("#submiter").style.backgroundColor = "#A7A7A7";
     }
 }
 //remove work
@@ -135,6 +155,8 @@ buttonstate(false);
 //state.setcmsmode=true;
 /*state.setcmsworks=true;
 state.setcmsworkconfirm=true;*/
+state.seterrormessasge="this is error message";
+state.seterrordiv=false;
 //fonction de tri
 function trier(id) {
     var doc = document.querySelectorAll(".singwork");
@@ -171,12 +193,6 @@ async function loadcategories() {
         alert("loadindind faild check internet connection")
     }
 }
-//try to creat work
-
-
-
-
-
 //check form validity
 async function checkerworks() {
     if(get("#inputfile").files.length>0){
@@ -239,7 +255,7 @@ function intToInt64(num) {
     return new BigInt64Array(arr.buffer)[0];
   }
 //********************************************************************************************************
-get("#edit-mode").addEventListener('click',switchworks);
+//get("#edit-mode").addEventListener('click',switchworks);
 get("#croix").addEventListener('click',switchworks);
 get("#loginbut").addEventListener('click',tologin);
 get("#croixi").addEventListener('click',backtocms);
@@ -251,7 +267,10 @@ get("#inputfile").addEventListener('change',checkerworks);
 get(".cat").addEventListener('click',()=>{
     trier('al')
 });
-get("#submiter").addEventListener('click',trytocreateworks);
+get("#error-div button").addEventListener('click',function(){
+    state.seterrordiv=false;
+});
+
 /*get("#").addEventListener('click', function (){
     state.setcmsworkconfirm = false;
     if (state.cmsworks == false) {
@@ -296,10 +315,8 @@ function backfromeditdiv() {//#arrawback
 async function trytologin() {
 
     var user = {
-        /*email: get("#email-input").value,
-        password: get("#mdp-input").value*/
-        email: "sophie.bluel@test.tld",
-        password: "S0phie"
+        email: get("#email-input").value,
+        password: get("#mdp-input").value
     }
     try {
 
@@ -326,8 +343,6 @@ async function trytologin() {
 }
 async function trytocreateworks() {
     
-    
-    //S0phie*/
     try {
         var inputworks = {
             image: get("#inputfile").files[0],
@@ -343,15 +358,19 @@ async function trytocreateworks() {
                 method: "POST",
                 headers: {
                     'accept': 'application/json',
-                    'Authorization': `Bearer ${token.token}`,
+                    'Authorization': `Bearer ${token.token}`
                     //'Content-Type':'multipart/form-data'
                 },
                 body: formdata
-            });
-            refrech();
-        
+            
+        });
+        refrech();
+        state.setcmsworkconfirm=false;
+        state.setcmsworks=true;
     } catch (error) {
-        alert(error);
+        state.seterrordiv=true;
+        state.setmessage=error;
+        throw new Error("Something went badly wrong!");
     }
-    return false;
+    
 }
