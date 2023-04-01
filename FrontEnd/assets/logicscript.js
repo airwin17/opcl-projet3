@@ -2,7 +2,7 @@
 var categories;
 var works;
 var cimage;
-var token;
+var token=sessionStorage.getItem("tokenstore");
 var server = "http://localhost:5678/api/";
 var reader = new FileReader();
 var defaultimg = "assets/icons/Gr.png";
@@ -79,16 +79,21 @@ var state = {
             get("div#modifier-div").style.display = "flex";
             get("div#modifier-div2").style.display = "flex";
             get("div#header-edit-div").style.display = "flex";
-            get("nav#nav-cat").style.display = "none"
+            get("nav#nav-cat").style.display = "none";
+            get("#loginbut").innerHTML="logout";
         } else {
             get("div#modifier-div").style.display = "none";
             get("div#modifier-div2").style.display = "none";
             get("div#header-edit-div").style.display = "none";
-            get("nav#nav-cat").style.display = "flex"
+            get("nav#nav-cat").style.display = "flex";
+            get("#loginbut").innerHTML="login";            
         }
     }
 }
-
+if(token!=null){
+    state.setcmsmode=true;
+    console.log(token)
+}
 //refrech cmsworks
 async function refrech() {
     try {
@@ -138,7 +143,7 @@ async function removework(tid) {
     try {
         const response = await fetch(server + `works/${tid}`, {
             method: "DELETE",
-            headers: { 'Authorization': `Bearer ${token.token}` }
+            headers: { 'Authorization': `Bearer ${token}` }
         });
 
         if (response.ok) {
@@ -248,12 +253,6 @@ async function fileToBinaryString(file) {
       };
     });
 }
-function intToInt64(num) {
-    var arr = new Int32Array(2);
-    arr[0] = num;
-    arr[1] = (num > 0x7fffffff) ? 0xffffffff : 0;
-    return new BigInt64Array(arr.buffer)[0];
-  }
 //********************************************************************************************************
 //get("#edit-mode").addEventListener('click',switchworks);
 get("#croix").addEventListener('click',switchworks);
@@ -282,11 +281,18 @@ get("#error-div button").addEventListener('click',function(){
 
 //***********************************************************************************************************
 function tologin(){
-    if (state.login == true) {
-        state.setlogin = false;
-    } else {
-        state.setlogin = true;
+    if(token!=null){
+        token=null;
+        sessionStorage.removeItem("tokenstore");
+        state.setcmsmode=false;
+    }else{
+        if (state.login == true) {
+            state.setlogin = false;
+        } else {
+            state.setlogin = true;
+        }
     }
+    
 }
 //croix
 function switchworks(){
@@ -312,14 +318,29 @@ function backfromeditdiv() {//#arrawback
 }
 //************************************************************************************************************ */
 //log-subbut
-async function trytologin() {
-
+ async function trytologin() {
     var user = {
         email: get("#email-input").value,
         password: get("#mdp-input").value
     }
     try {
-
+        /*fetch(server + "users/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(user)
+        }).then((res)=>{
+            return res.json();
+        })
+        .then(res=>{
+            tologin();
+            state.setcmsmode = true;
+            trier("al");
+            sessionStorage.setItem("tokenstore",res.token);
+            token=sessionStorage.getItem("tokenstore");
+        }).catch(error => {get("#mdpfaux").style.display = "block"});*/
+/************************************************************************************************* */
         const res = await fetch(server + "users/login", {
             method: "POST",
             headers: {
@@ -332,8 +353,7 @@ async function trytologin() {
             state.setcmsmode = true;
             trier("al");
             token = await res.json();
-
-            //console.log(token);
+            sessionStorage.setItem("tokenstore",token.token);
         } else {
             get("#mdpfaux").style.display = "block";
         }
@@ -341,6 +361,7 @@ async function trytologin() {
         alert("failed check internet connection");
     }
 }
+
 async function trytocreateworks() {
     
     try {
@@ -358,7 +379,7 @@ async function trytocreateworks() {
                 method: "POST",
                 headers: {
                     'accept': 'application/json',
-                    'Authorization': `Bearer ${token.token}`
+                    'Authorization': `Bearer ${token}`
                     //'Content-Type':'multipart/form-data'
                 },
                 body: formdata
@@ -370,7 +391,7 @@ async function trytocreateworks() {
     } catch (error) {
         state.seterrordiv=true;
         state.setmessage=error;
-        throw new Error("Something went badly wrong!");
+        //throw new Error("Something went badly wrong!");
     }
     
 }
