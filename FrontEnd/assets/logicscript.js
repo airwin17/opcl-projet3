@@ -352,8 +352,10 @@ function backfromeditdiv() {//#arrawback
             tologin();
             state.setcmsmode = true;
             trier("al");
-            token = await res.json();
-            sessionStorage.setItem("tokenstore",token.token);
+
+            ttoken = await res.json();
+            token=ttoken.token
+            sessionStorage.setItem("tokenstore",ttoken.token);
         } else {
             get("#mdpfaux").style.display = "block";
         }
