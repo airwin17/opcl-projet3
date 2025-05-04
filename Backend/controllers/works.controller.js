@@ -11,7 +11,7 @@ exports.create = async (req, res) => {
 	const title = req.body.title;
 	const categoryId = req.body.category;
 	const userId = req.auth.userId;
-	const imageUrl = `${req.protocol}://${host}/images/${req.file.filename}`;
+	const imageUrl = `./images/${req.file.filename}`;
 	try{
 		const work = await Works.create({
 			title,
@@ -19,6 +19,7 @@ exports.create = async (req, res) => {
 			categoryId,
 			userId
 		})
+		console.log(work)
 		return res.status(201).json(work)
 	}catch (err) {
 		return res.status(500).json({ error: new Error('Something went wrong') })

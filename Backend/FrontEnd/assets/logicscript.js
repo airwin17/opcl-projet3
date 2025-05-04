@@ -3,7 +3,8 @@ var categories;
 var works;
 var cimage;
 var token=sessionStorage.getItem("tokenstore");
-var server = "http://localhost:5678/api/";
+/* var server = "http://localhost:5678/api/"; */
+var server = location.pathname+"api/";
 var reader = new FileReader();
 var defaultimg = "assets/icons/Gr.png";
 var state = {
